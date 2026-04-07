@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    android:background="#F5F5F5">
+
+    <TextView
+        android:id="@+id/appTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Stream Player Pro"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:textColor="#333333"/>
+
+    <!-- Volume Control Section -->
+    <LinearLayout
+        android:id="@+id/vol_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_below="@id/appTitle"
+        android:layout_marginTop="40dp"
+        android:background="@android:color/white"
+        android:padding="12dp"
+        android:elevation="2dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="VOL"
+            android:textStyle="bold"
+            android:layout_marginEnd="10dp"/>
+
+        <SeekBar
+            android:id="@+id/volumeSeekBar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:max="100"
+            android:progress="80" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/loadingStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/controls_container"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:text="Conectando..."
+        android:textColor="#FF9800"
+        android:visibility="invisible" />
+
+    <!-- Play/Stop/Fav Controls (Bottom Center) -->
+    <LinearLayout
+        android:id="@+id/controls_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp">
+
+        <Button
+            android:id="@+id/playButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="PLAY"
+            android:backgroundTint="#4CAF50" />
+
+        <Button
+            android:id="@+id/pauseButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="STOP"
+            android:backgroundTint="#F44336" />
+
+        <Button
+            android:id="@+id/favButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="⭐"
+            android:backgroundTint="#FFC107" />
+    </LinearLayout>
+
+    <!-- Vertical Social Stack (Bottom Right) -->
+    <LinearLayout
+        android:id="@+id/social_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="20dp">
+
+        <Button
+            android:id="@+id/socialButton1"
+            android:layout_width="65dp"
+            android:layout_height="wrap_content"
+            android:text="IG"
+            android:textSize="10sp"
+            android:layout_marginBottom="4dp"
+            android:backgroundTint="#E1306C"/>
+
+        <Button
+            android:id="@+id/socialButton2"
+            android:layout_width="65dp"
+            android:layout_height="wrap_content"
+            android:text="X"
+            android:textSize="10sp"
+            android:layout_marginBottom="4dp"
+            android:backgroundTint="#1DA1F2"/>
+
+        <Button
+            android:id="@+id/socialButton3"
+            android:layout_width="65dp"
+            android:layout_height="wrap_content"
+            android:text="WEB"
+            android:textSize="10sp"
+            android:backgroundTint="#607D8B"/>
+    </LinearLayout>
+
+</RelativeLayout>
