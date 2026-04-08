@@ -9,7 +9,6 @@ import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.os.IBinder;
 import android.view.View;
-import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,9 +17,7 @@ public class MainActivity extends Activity {
     private MusicService musicService;
     private boolean isBound = false;
     private TextView loadingStatus;
-
-    // Default streaming URL - can be updated via the "Favorite" feature
-    private String currentUrl = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3";
+    private final String currentUrl = "https://sp1.32bit.gr/8018/;";
     private SharedPreferences prefs;
 
     /**
@@ -32,13 +29,6 @@ public class MainActivity extends Activity {
             MusicService.MusicBinder binder = (MusicService.MusicBinder) service;
             musicService = binder.getService();
             isBound = true;
-
-            // Sync initial volume from the SeekBar to the Service once connected
-            SeekBar sb = findViewById(R.id.volumeSeekBar);
-            if (sb != null && musicService != null) {
-                // Map 0-100 progress to 0.0f-1.0f float for MediaPlayer
-                musicService.setVolume(sb.getProgress() / 100f);
-            }
         }
 
         @Override
@@ -52,16 +42,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Initialize SharedPreferences for saving the favorite stream
-        prefs = getSharedPreferences("AppPrefs", MODE_PRIVATE);
         loadingStatus = findViewById(R.id.loadingStatus);
-
-        // Load favorite URL if previously saved by the user
-        String savedFav = prefs.getString("fav_url", "");
-        if (!savedFav.isEmpty()) {
-            currentUrl = savedFav;
-            Toast.makeText(this, "Favorite stream loaded", Toast.LENGTH_SHORT).show();
-        }
 
         // Start and Bind to the background MusicService.
         // Calling startService ensures the service lives independently of the activity.
@@ -74,7 +55,7 @@ public class MainActivity extends Activity {
         findViewById(R.id.playButton).setOnClickListener(v -> {
             if (isBound) {
                 loadingStatus.setVisibility(View.VISIBLE);
-                musicService.play(currentUrl, mp -> {
+                musicService.play(currentUrl, () -> {
                     // This callback is triggered by the Service when buffering completes and playback starts
                     runOnUiThread(() -> {
                         loadingStatus.setVisibility(View.INVISIBLE);
@@ -93,33 +74,6 @@ public class MainActivity extends Activity {
                 Toast.makeText(this, "Stream Stopped", Toast.LENGTH_SHORT).show();
             }
         });
-
-        // --- Favorite Stream Logic ---
-
-        findViewById(R.id.favButton).setOnClickListener(v -> {
-            // Persist the current URL to local storage
-            prefs.edit().putString("fav_url", currentUrl).apply();
-            Toast.makeText(this, "Stream saved as favorite!", Toast.LENGTH_SHORT).show();
-        });
-
-        // --- Volume Slider Logic ---
-
-        SeekBar volumeBar = findViewById(R.id.volumeSeekBar);
-        if (volumeBar != null) {
-            volumeBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-                @Override
-                public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                    if (isBound && musicService != null) {
-                        // MediaPlayer volume range is 0.0f to 1.0f
-                        float volume = progress / 100f;
-                        musicService.setVolume(volume);
-                    }
-                }
-
-                @Override public void onStartTrackingTouch(SeekBar seekBar) {}
-                @Override public void onStopTrackingTouch(SeekBar seekBar) {}
-            });
-        }
 
         // --- Social Media Button Placeholders ---
 

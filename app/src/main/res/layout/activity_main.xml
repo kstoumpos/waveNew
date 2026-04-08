@@ -17,35 +17,6 @@
         android:layout_marginTop="30dp"
         android:textColor="#333333"/>
 
-    <!-- Volume Control Section -->
-    <LinearLayout
-        android:id="@+id/vol_box"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:layout_below="@id/appTitle"
-        android:layout_marginTop="40dp"
-        android:background="@android:color/white"
-        android:padding="12dp"
-        android:elevation="2dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="VOL"
-            android:textStyle="bold"
-            android:layout_marginEnd="10dp"/>
-
-        <SeekBar
-            android:id="@+id/volumeSeekBar"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:max="100"
-            android:progress="80" />
-    </LinearLayout>
-
     <TextView
         android:id="@+id/loadingStatus"
         android:layout_width="wrap_content"
@@ -53,7 +24,7 @@
         android:layout_above="@id/controls_container"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="16dp"
-        android:text="Conectando..."
+        android:text="@string/connecting"
         android:textColor="#FF9800"
         android:visibility="invisible" />
 
@@ -82,13 +53,6 @@
             android:layout_marginEnd="8dp"
             android:text="STOP"
             android:backgroundTint="#F44336" />
-
-        <Button
-            android:id="@+id/favButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="⭐"
-            android:backgroundTint="#FFC107" />
     </LinearLayout>
 
     <!-- Vertical Social Stack (Bottom Right) -->
