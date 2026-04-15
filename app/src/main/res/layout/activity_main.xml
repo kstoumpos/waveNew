@@ -3,94 +3,145 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp"
-    android:background="#F5F5F5">
+    android:background="#000">
 
-    <TextView
-        android:id="@+id/appTitle"
+    <!-- Header / Logo -->
+    <ImageView
+        android:id="@+id/background_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logomobile"
+        android:background="@android:color/transparent"
+        android:contentDescription="@null"
+        android:layout_marginTop="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="20dp" />
+
+    <!-- Play / Stop Button — ανάμεσα στο logo και το κείμενο -->
+    <FrameLayout
+        android:id="@+id/playStopContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Stream Player Pro"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        android:layout_below="@+id/background_image"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:textColor="#333333"/>
+        android:layout_marginTop="24dp"
+        android:elevation="8dp">
 
+        <ImageButton
+            android:id="@+id/playButton"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:padding="28dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_play"
+            android:background="@drawable/bg_button_circle"
+            android:contentDescription="@string/play" />
+
+        <ImageButton
+            android:id="@+id/stopButton"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:padding="28dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_stop"
+            android:visibility="gone"
+            android:background="@drawable/bg_button_circle"
+            android:contentDescription="@string/stop" />
+
+    </FrameLayout>
+
+    <!-- Loading Status -->
     <TextView
         android:id="@+id/loadingStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@id/controls_container"
+        android:layout_below="@id/playStopContainer"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="16dp"
         android:text="@string/connecting"
         android:textColor="#FF9800"
+        android:textStyle="bold"
+        android:shadowColor="#000000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="2"
         android:visibility="invisible" />
 
-    <!-- Play/Stop/Fav Controls (Bottom Center) -->
-    <LinearLayout
-        android:id="@+id/controls_container"
-        android:layout_width="wrap_content"
+    <!-- Main Text — κάτω από το κουμπί -->
+    <TextView
+        android:id="@+id/mainText"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp">
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        android:text="@string/main_text"
+        android:textAlignment="center"
+        android:textColor="#C2D2B9"
+        android:textSize="48sp"
+        android:layout_below="@+id/loadingStatus"
+        android:visibility="visible" />
 
-        <Button
-            android:id="@+id/playButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:text="PLAY"
-            android:backgroundTint="#4CAF50" />
-
-        <Button
-            android:id="@+id/pauseButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:text="STOP"
-            android:backgroundTint="#F44336" />
-    </LinearLayout>
-
-    <!-- Vertical Social Stack (Bottom Right) -->
+    <!-- Social Media Buttons — κάτω δεξιά -->
     <LinearLayout
         android:id="@+id/social_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginBottom="20dp">
+        android:layout_marginBottom="12dp"
+        android:layout_marginEnd="5dp">
 
-        <Button
-            android:id="@+id/socialButton1"
-            android:layout_width="65dp"
-            android:layout_height="wrap_content"
-            android:text="IG"
-            android:textSize="10sp"
-            android:layout_marginBottom="4dp"
-            android:backgroundTint="#E1306C"/>
+        <ImageButton
+            android:id="@+id/instagram"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:contentDescription="@string/instagram"
+            android:padding="6dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/instagram" />
 
-        <Button
-            android:id="@+id/socialButton2"
-            android:layout_width="65dp"
-            android:layout_height="wrap_content"
-            android:text="X"
-            android:textSize="10sp"
-            android:layout_marginBottom="4dp"
-            android:backgroundTint="#1DA1F2"/>
+        <ImageButton
+            android:id="@+id/facebook"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:contentDescription="@string/facebook"
+            android:padding="6dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/facebook" />
 
-        <Button
-            android:id="@+id/socialButton3"
-            android:layout_width="65dp"
-            android:layout_height="wrap_content"
-            android:text="WEB"
-            android:textSize="10sp"
-            android:backgroundTint="#607D8B"/>
+        <ImageButton
+            android:id="@+id/spotify"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:contentDescription="@string/spotify"
+            android:padding="6dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/spotify"/>
+
+        <ImageButton
+            android:id="@+id/youtube"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:contentDescription="@string/youtube"
+            android:padding="6dp"
+            android:scaleType="fitCenter"
+            android:background="@android:color/transparent"
+            android:src="@drawable/youtube" />
+
+        <ImageButton
+            android:id="@+id/website"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:contentDescription="@string/website"
+            android:padding="6dp"
+            android:scaleType="fitCenter"
+            android:background="@android:color/transparent"
+            android:src="@drawable/website" />
+
     </LinearLayout>
 
 </RelativeLayout>

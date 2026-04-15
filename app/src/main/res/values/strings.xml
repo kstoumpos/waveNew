@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">My Application</string>
     <string name="connecting">Connecting...</string>
+    <string name="stream_player_pro">Stream Player Pro</string>
+    <string name="play">PLAY</string>
+    <string name="stop">STOP</string>
+    <string name="instagram">instagram</string>
+    <string name="facebook">facebook</string>
+    <string name="spotify">spotify</string>
+    <string name="youtube">youtube</string>
+    <string name="website">website</string>
+    <string name="main_text">YOUR DEVOTIONAL ROCK</string>
 </resources>
