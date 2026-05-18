@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0A2323">
+
+    <!-- Header / Logo -->
+    <ImageView
+        android:id="@+id/background_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="64dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@null"
+        android:src="@drawable/logomobile" />
+
+    <!-- Play / Stop Button -->
+    <FrameLayout
+        android:id="@+id/playStopContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/background_image"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:elevation="8dp">
+
+        <ImageButton
+            android:id="@+id/playButton"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:padding="36dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_play"
+            android:background="@drawable/bg_button_circle"
+            android:contentDescription="@string/play" />
+
+        <ImageButton
+            android:id="@+id/stopButton"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:padding="36dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_stop"
+            android:visibility="gone"
+            android:background="@drawable/bg_button_circle"
+            android:contentDescription="@string/stop" />
+
+    </FrameLayout>
+
+    <!-- Loading Status -->
+    <TextView
+        android:id="@+id/loadingStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/playStopContainer"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/connecting"
+        android:textColor="#00FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:shadowColor="#000000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="2"
+        android:visibility="invisible" />
+
+    <!-- Main Text -->
+    <TextView
+        android:id="@+id/mainText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/loadingStatus"
+        android:layout_marginTop="16dp"
+        android:paddingStart="80dp"
+        android:paddingEnd="80dp"
+        android:text="@string/main_text"
+        android:textAlignment="center"
+        android:textColor="#C2D2B9"
+        android:textSize="64sp"
+        android:visibility="visible" />
+
+    <!-- Social Media Buttons -->
+    <LinearLayout
+        android:id="@+id/social_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="24dp">
+
+        <ImageButton
+            android:id="@+id/instagram"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/instagram"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/instagram" />
+
+        <ImageButton
+            android:id="@+id/facebook"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/facebook"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/facebook" />
+
+        <ImageButton
+            android:id="@+id/spotify"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/spotify"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/spotify" />
+
+        <ImageButton
+            android:id="@+id/youtube"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/youtube"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/youtube" />
+
+        <ImageButton
+            android:id="@+id/website"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/website"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/website" />
+
+    </LinearLayout>
+
+</RelativeLayout>
