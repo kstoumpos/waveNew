@@ -19,6 +19,8 @@ public class MainActivity extends Activity {
     private MusicService musicService;
     private boolean isBound = false;
     private TextView loadingStatus;
+    private ImageButton playButton;
+    private ImageButton stopButton;
     private final String currentUrl = "https://sp1.32bit.gr/8018/;";
 
     /**
@@ -44,6 +46,8 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         loadingStatus = findViewById(R.id.loadingStatus);
+        playButton = findViewById(R.id.playButton);
+        stopButton = findViewById(R.id.stopButton);
 
         // Start and Bind to the background MusicService.
         // Calling startService ensures the service lives independently of the activity.
@@ -52,127 +56,102 @@ public class MainActivity extends Activity {
         bindService(intent, connection, Context.BIND_AUTO_CREATE);
 
         // --- Playback Control Handlers ---
-        ImageButton playButton = findViewById(R.id.playButton);
-        ImageButton stopButton = findViewById(R.id.stopButton);
-
-        findViewById(R.id.playButton).setOnClickListener(v -> {
+        // Single unified listener for Play button
+        playButton.setOnClickListener(v -> {
             if (isBound) {
                 loadingStatus.setVisibility(View.VISIBLE);
                 musicService.play(currentUrl, () -> {
-                    // This callback is triggered by the Service when buffering completes and playback starts
                     runOnUiThread(() -> {
                         loadingStatus.setVisibility(View.INVISIBLE);
-                        Toast.makeText(MainActivity.this, "Now Playing", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this,
+                                "Now Playing", Toast.LENGTH_SHORT).show();
+                        playButton.setVisibility(View.GONE);
+                        stopButton.setVisibility(View.VISIBLE);
                     });
                 });
             } else {
-                Toast.makeText(this, "Connecting to music service...", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,
+                        "Connecting to music service...", Toast.LENGTH_SHORT).show();
             }
         });
 
-        findViewById(R.id.stopButton).setOnClickListener(v -> {
+        // Single unified listener for Stop button
+        stopButton.setOnClickListener(v -> {
             if (isBound) {
                 musicService.stop();
                 loadingStatus.setVisibility(View.INVISIBLE);
+                stopButton.setVisibility(View.GONE);
+                playButton.setVisibility(View.VISIBLE);
                 Toast.makeText(this, "Stream Stopped", Toast.LENGTH_SHORT).show();
             }
         });
 
-        playButton.setOnClickListener(v -> musicService.play(currentUrl, () -> runOnUiThread(() -> {
-            playButton.setVisibility(View.GONE);
-            stopButton.setVisibility(View.VISIBLE);
-        })));
-
-        stopButton.setOnClickListener(v -> {
-            musicService.stop();
-            stopButton.setVisibility(View.GONE);
-            playButton.setVisibility(View.VISIBLE);
-        });
-
-        // --- Social Media Button Placeholders ---
+        // --- Social Media Button Handlers ---
         findViewById(R.id.instagram).setOnClickListener(v -> openInstagram());
-
-        // Facebook
         findViewById(R.id.facebook).setOnClickListener(v -> openFacebook());
-
-        // Spotify
         findViewById(R.id.spotify).setOnClickListener(v -> openSpotify());
-
-        // YouTube Button
         findViewById(R.id.youtube).setOnClickListener(v -> openYouTube());
-
-        // Website Button
         findViewById(R.id.website).setOnClickListener(v -> openWebsite("https://www.wave974.gr/"));
     }
 
     private void openFacebook() {
         Intent intent;
         try {
-            // This URI scheme works best for opening specific pages in the FB app
-            intent = new Intent(Intent.ACTION_VIEW, Uri.parse("fb://facewebmodal/f?href=" + "https://www.facebook.com/Wave97.4"));
+            intent = new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("fb://facewebmodal/f?href=https://www.facebook.com/Wave97.4"));
             startActivity(intent);
         } catch (Exception e) {
-            // Fallback to browser
-            intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/Wave97.4"));
+            intent = new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("https://www.facebook.com/Wave97.4"));
             startActivity(intent);
         }
     }
 
     private void openSpotify() {
-        String appUri = "spotify:artist:" + "5sle9af7m5jyf79nde75rvt5p";
-        String webUrl = "https://open.spotify.com/artist/" + "5sle9af7m5jyf79nde75rvt5p";
+        String appUri = "spotify:artist:5sle9af7m5jyf79nde75rvt5p";
+        String webUrl = "https://open.spotify.com/artist/5sle9af7m5jyf79nde75rvt5p";
 
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(appUri));
-        // Explicitly target the Spotify package
         intent.setPackage("com.spotify.music");
 
         try {
             startActivity(intent);
         } catch (ActivityNotFoundException e) {
-            // Fallback to browser
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(webUrl)));
         }
     }
 
     private void openInstagram() {
-        // The "_u/" tells Instagram to open the user profile specifically
-        Uri appUri = Uri.parse("https://instagram.com/_u/" + "wave_97.4");
+        Uri appUri = Uri.parse("https://instagram.com/_u/wave_97.4");
         Intent intent = new Intent(Intent.ACTION_VIEW, appUri);
-
-        // Explicitly target the Instagram app package
         intent.setPackage("com.instagram.android");
 
         try {
             startActivity(intent);
         } catch (ActivityNotFoundException e) {
-            // If the app is not installed, open the standard web URL in a browser
-            Uri webUri = Uri.parse("https://instagram.com/" + "wave_97.4");
+            Uri webUri = Uri.parse("https://instagram.com/wave_97.4");
             startActivity(new Intent(Intent.ACTION_VIEW, webUri));
         }
     }
 
     private void openYouTube() {
-        // Note: Use the Channel ID (e.g., UCxxxxxxxxxxxx)
-        Intent appIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube:" + "UCEU3Mz0GbUo6r5Ly6NHg7kQ"));
-        Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/channel/" + "UCEU3Mz0GbUo6r5Ly6NHg7kQ"));
+        Intent appIntent = new Intent(Intent.ACTION_VIEW,
+                Uri.parse("vnd.youtube:UCEU3Mz0GbUo6r5Ly6NHg7kQ"));
+        Intent webIntent = new Intent(Intent.ACTION_VIEW,
+                Uri.parse("https://www.youtube.com/channel/UCEU3Mz0GbUo6r5Ly6NHg7kQ"));
 
         try {
-            // Try to open the YouTube app
             startActivity(appIntent);
         } catch (ActivityNotFoundException e) {
-            // Fallback to the browser
             startActivity(webIntent);
         }
     }
 
     private void openWebsite(String url) {
-        // Ensure the URL starts with http:// or https://
         if (!url.startsWith("http://") && !url.startsWith("https://")) {
             url = "https://" + url;
         }
-
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-        startActivity(intent);
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
     }
 
     /**

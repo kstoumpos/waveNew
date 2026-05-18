@@ -3,19 +3,21 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000">
+    android:background="#0A2323">
 
     <!-- Header / Logo -->
     <ImageView
         android:id="@+id/background_image"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/logomobile"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:background="@android:color/transparent"
         android:contentDescription="@null"
-        android:layout_marginTop="50dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginBottom="20dp" />
+        android:src="@drawable/logomobile" />
 
     <!-- Play / Stop Button — ανάμεσα στο logo και το κείμενο -->
     <FrameLayout
@@ -59,7 +61,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:text="@string/connecting"
-        android:textColor="#FF9800"
+        android:textColor="#00FFFFFF"
         android:textStyle="bold"
         android:shadowColor="#000000"
         android:shadowDx="2"
@@ -86,19 +88,18 @@
         android:id="@+id/social_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="12dp"
-        android:layout_marginEnd="5dp">
+        android:layout_marginBottom="12dp">
 
         <ImageButton
             android:id="@+id/instagram"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:background="@android:color/transparent"
             android:contentDescription="@string/instagram"
             android:padding="6dp"
-            android:background="@android:color/transparent"
             android:scaleType="fitCenter"
             android:src="@drawable/instagram" />
 
@@ -106,9 +107,9 @@
             android:id="@+id/facebook"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:background="@android:color/transparent"
             android:contentDescription="@string/facebook"
             android:padding="6dp"
-            android:background="@android:color/transparent"
             android:scaleType="fitCenter"
             android:src="@drawable/facebook" />
 
@@ -116,30 +117,30 @@
             android:id="@+id/spotify"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:background="@android:color/transparent"
             android:contentDescription="@string/spotify"
             android:padding="6dp"
-            android:background="@android:color/transparent"
             android:scaleType="fitCenter"
-            android:src="@drawable/spotify"/>
+            android:src="@drawable/spotify" />
 
         <ImageButton
             android:id="@+id/youtube"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:background="@android:color/transparent"
             android:contentDescription="@string/youtube"
             android:padding="6dp"
             android:scaleType="fitCenter"
-            android:background="@android:color/transparent"
             android:src="@drawable/youtube" />
 
         <ImageButton
             android:id="@+id/website"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:background="@android:color/transparent"
             android:contentDescription="@string/website"
             android:padding="6dp"
             android:scaleType="fitCenter"
-            android:background="@android:color/transparent"
             android:src="@drawable/website" />
 
     </LinearLayout>
