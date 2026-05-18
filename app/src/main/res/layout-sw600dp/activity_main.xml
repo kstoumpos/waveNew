@@ -80,7 +80,7 @@
         android:paddingStart="80dp"
         android:paddingEnd="80dp"
         android:text="@string/main_text"
-        android:fontFamily="@font/BlackMangoRegular"
+        android:fontFamily="@font/black_mango_regular"
         android:textAlignment="center"
         android:textColor="#C2D2B9"
         android:textSize="64sp"
