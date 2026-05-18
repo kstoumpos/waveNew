@@ -1,35 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0A2323">
+    android:background="#0A2323"
+    android:fillViewport="true">
 
-    <!-- Left column: Logo + Play/Stop button -->
-    <LinearLayout
-        android:id="@+id/left_column"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/right_column"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:paddingStart="48dp"
-        android:paddingEnd="24dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
+        <!-- Header / Logo -->
         <ImageView
             android:id="@+id/background_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="32dp"
             android:background="@android:color/transparent"
             android:contentDescription="@null"
             android:src="@drawable/logomobile" />
 
+        <!-- Play / Stop Button -->
         <FrameLayout
             android:id="@+id/playStopContainer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:layout_below="@+id/background_image"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="24dp"
             android:elevation="8dp">
 
@@ -56,11 +55,13 @@
 
         </FrameLayout>
 
+        <!-- Loading Status -->
         <TextView
             android:id="@+id/loadingStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:layout_below="@id/playStopContainer"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="12dp"
             android:text="@string/connecting"
             android:textColor="#00FFFFFF"
@@ -72,92 +73,84 @@
             android:shadowRadius="2"
             android:visibility="invisible" />
 
-    </LinearLayout>
-
-    <!-- Right column: Main text -->
-    <LinearLayout
-        android:id="@+id/right_column"
-        android:layout_width="50%"
-        android:layout_height="match_parent"
-        android:layout_alignParentEnd="true"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:paddingStart="24dp"
-        android:paddingEnd="48dp"
-        android:paddingBottom="72dp">
-
+        <!-- Main Text -->
         <TextView
             android:id="@+id/mainText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/loadingStatus"
+            android:layout_marginTop="16dp"
+            android:paddingStart="80dp"
+            android:paddingEnd="80dp"
             android:text="@string/main_text"
             android:textAlignment="center"
             android:textColor="#C2D2B9"
             android:textSize="48sp"
             android:visibility="visible" />
 
-    </LinearLayout>
+        <!-- Social Media Buttons -->
+        <LinearLayout
+            android:id="@+id/social_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/mainText"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp">
 
-    <!-- Social Media Buttons — pinned to bottom center -->
-    <LinearLayout
-        android:id="@+id/social_container"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="16dp">
+            <ImageButton
+                android:id="@+id/instagram"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/instagram"
+                android:padding="7dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/instagram" />
 
-        <ImageButton
-            android:id="@+id/instagram"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/instagram"
-            android:padding="7dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/instagram" />
+            <ImageButton
+                android:id="@+id/facebook"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/facebook"
+                android:padding="7dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/facebook" />
 
-        <ImageButton
-            android:id="@+id/facebook"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/facebook"
-            android:padding="7dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/facebook" />
+            <ImageButton
+                android:id="@+id/spotify"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/spotify"
+                android:padding="7dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/spotify" />
 
-        <ImageButton
-            android:id="@+id/spotify"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/spotify"
-            android:padding="7dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/spotify" />
+            <ImageButton
+                android:id="@+id/youtube"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/youtube"
+                android:padding="7dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/youtube" />
 
-        <ImageButton
-            android:id="@+id/youtube"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/youtube"
-            android:padding="7dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/youtube" />
+            <ImageButton
+                android:id="@+id/website"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/website"
+                android:padding="7dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/website" />
 
-        <ImageButton
-            android:id="@+id/website"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/website"
-            android:padding="7dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/website" />
+        </LinearLayout>
 
-    </LinearLayout>
+    </RelativeLayout>
 
-</RelativeLayout>
+</ScrollView>
