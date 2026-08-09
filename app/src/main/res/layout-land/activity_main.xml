@@ -84,7 +84,6 @@
             android:paddingStart="50dp"
             android:paddingEnd="50dp"
             android:text="@string/main_text"
-            android:fontFamily="@font/black_mango_regular"
             android:textAlignment="center"
             android:textColor="#C2D2B9"
             android:textSize="32sp"
