@@ -41,11 +41,7 @@ public class MusicService extends Service {
         }
 
         // Start foreground service immediately (Android 14 requirement)
-        Notification notification = new NotificationCompat.Builder(this, "radio_channel")
-                .setContentTitle("Radio")
-                .setContentText("Preparing stream…")
-                .setSmallIcon(R.drawable.ic_launcher_foreground)
-                .build();
+        Notification notification = buildNotification("Preparing stream…");
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             startForeground(1, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PLAYBACK);
@@ -55,6 +51,19 @@ public class MusicService extends Service {
 
         // Create ExoPlayer
         player = new ExoPlayer.Builder(this).build();
+    }
+
+    private Notification buildNotification(String contentText) {
+        return new NotificationCompat.Builder(this, "radio_channel")
+                .setContentTitle("Wave 97.4")
+                .setContentText(contentText)
+                .setSmallIcon(R.drawable.ic_launcher_foreground)
+                .build();
+    }
+
+    private void updateNotification(String contentText) {
+        NotificationManager manager = getSystemService(NotificationManager.class);
+        manager.notify(1, buildNotification(contentText));
     }
 
     @OptIn(markerClass = UnstableApi.class)
@@ -80,6 +89,7 @@ public class MusicService extends Service {
             @Override
             public void onPlaybackStateChanged(int state) {
                 if (state == Player.STATE_READY) {
+                    updateNotification("Playing stream");
                     onStarted.run();
                 }
             }
