@@ -57,7 +57,7 @@ public class MusicService extends Service {
         return new NotificationCompat.Builder(this, "radio_channel")
                 .setContentTitle("Wave 97.4")
                 .setContentText(contentText)
-                .setSmallIcon(R.drawable.ic_launcher_foreground)
+                .setSmallIcon(R.mipmap.ic_launcher)
                 .build();
     }
 
@@ -100,6 +100,7 @@ public class MusicService extends Service {
         if (player != null) {
             player.stop();
         }
+        updateNotification("Stream stopped");
     }
 
     @Override
