@@ -21,7 +21,6 @@ public class MainActivity extends Activity {
     private TextView loadingStatus;
     private ImageButton playButton;
     private ImageButton stopButton;
-    private final String currentUrl = "https://sp1.32bit.gr/8018/;";
 
     /**
      * Monitors the connection status with the MusicService.
@@ -55,20 +54,21 @@ public class MainActivity extends Activity {
         startService(intent);
         bindService(intent, connection, Context.BIND_AUTO_CREATE);
 
+        // Refresh the cached stream URL from the remote config in the background.
+        StreamConfig.refresh(this);
+
         // --- Playback Control Handlers ---
         // Single unified listener for Play button
         playButton.setOnClickListener(v -> {
             if (isBound) {
                 loadingStatus.setVisibility(View.VISIBLE);
-                musicService.play(currentUrl, () -> {
-                    runOnUiThread(() -> {
-                        loadingStatus.setVisibility(View.INVISIBLE);
-                        Toast.makeText(MainActivity.this,
-                                "Now Playing", Toast.LENGTH_SHORT).show();
-                        playButton.setVisibility(View.GONE);
-                        stopButton.setVisibility(View.VISIBLE);
-                    });
-                });
+                musicService.play(StreamConfig.getCachedUrl(this), () -> runOnUiThread(() -> {
+                    loadingStatus.setVisibility(View.INVISIBLE);
+                    Toast.makeText(MainActivity.this,
+                            "Now Playing", Toast.LENGTH_SHORT).show();
+                    playButton.setVisibility(View.GONE);
+                    stopButton.setVisibility(View.VISIBLE);
+                }));
             } else {
                 Toast.makeText(this,
                         "Connecting to music service...", Toast.LENGTH_SHORT).show();
