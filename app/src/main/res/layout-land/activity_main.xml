@@ -10,6 +10,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <!-- Menu -->
+        <ImageButton
+            android:id="@+id/menuButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:background="@android:color/transparent"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_menu"
+            android:contentDescription="@string/menu_button" />
+
         <!-- Header / Logo -->
         <ImageView
             android:id="@+id/background_image"

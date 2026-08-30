@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.stoumpos.wave;
 
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
@@ -9,10 +9,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.IBinder;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
+import androidx.core.content.ContextCompat;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 public class MainActivity extends Activity {
 
@@ -48,19 +52,35 @@ public class MainActivity extends Activity {
         playButton = findViewById(R.id.playButton);
         stopButton = findViewById(R.id.stopButton);
 
-        // Start and Bind to the background MusicService.
-        // Calling startService ensures the service lives independently of the activity.
+        ImageButton menuButton = findViewById(R.id.menuButton);
+        menuButton.setOnClickListener(this::showMenu);
+
+        // Bind to the MusicService. 
+        // The service will be started as a foreground service when playback begins.
         Intent intent = new Intent(this, MusicService.class);
-        startService(intent);
         bindService(intent, connection, Context.BIND_AUTO_CREATE);
 
         // Refresh the cached stream URL from the remote config in the background.
         StreamConfig.refresh(this);
 
+        // Force an immediate FCM token fetch (rather than waiting on the SDK's own
+        // background init job, which some OEMs delay) and log the outcome for testing.
+        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                Log.d("FCM", "Token: " + task.getResult());
+            } else {
+                Log.w("FCM", "Failed to get token", task.getException());
+            }
+        });
+
         // --- Playback Control Handlers ---
         // Single unified listener for Play button
         playButton.setOnClickListener(v -> {
             if (isBound) {
+                // Ensure the service is started in the foreground
+                Intent serviceIntent = new Intent(this, MusicService.class);
+                ContextCompat.startForegroundService(this, serviceIntent);
+
                 loadingStatus.setVisibility(View.VISIBLE);
                 musicService.play(StreamConfig.getCachedUrl(this), () -> runOnUiThread(() -> {
                     loadingStatus.setVisibility(View.INVISIBLE);
@@ -92,6 +112,23 @@ public class MainActivity extends Activity {
         findViewById(R.id.spotify).setOnClickListener(v -> openSpotify());
         findViewById(R.id.youtube).setOnClickListener(v -> openYouTube());
         findViewById(R.id.website).setOnClickListener(v -> openWebsite("https://www.wave974.gr/"));
+    }
+
+    private void showMenu(View anchor) {
+        PopupMenu popupMenu = new PopupMenu(this, anchor);
+        popupMenu.getMenuInflater().inflate(R.menu.main_menu, popupMenu.getMenu());
+        popupMenu.setOnMenuItemClickListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.menu_sleep_timer) {
+                startActivity(new Intent(this, SleepTimerActivity.class));
+                return true;
+            } else if (id == R.id.menu_radio_alarm) {
+                startActivity(new Intent(this, RadioAlarmActivity.class));
+                return true;
+            }
+            return false;
+        });
+        popupMenu.show();
     }
 
     private void openFacebook() {

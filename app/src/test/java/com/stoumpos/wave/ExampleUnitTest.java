@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.stoumpos.wave;
 
 import org.junit.Test;
 

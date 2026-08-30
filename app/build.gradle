@@ -1,13 +1,14 @@
 plugins {
     id 'com.android.application'
+    id 'com.google.gms.google-services'
 }
 
 android {
-    namespace "com.example.myapplication"
+    namespace "com.stoumpos.wave"
     compileSdkVersion 36
 
     defaultConfig {
-        applicationId "com.example.myapplication"
+        applicationId "com.stoumpos.wave"
         minSdkVersion 30
         targetSdkVersion 36
         versionCode 1
@@ -37,6 +38,8 @@ dependencies {
     implementation 'androidx.media3:media3-common:1.11.0'
     implementation 'androidx.media3:media3-datasource:1.11.0'
     implementation 'androidx.media3:media3-exoplayer:1.11.0'
+    implementation platform('com.google.firebase:firebase-bom:34.18.0')
+    implementation 'com.google.firebase:firebase-messaging'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.3.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.7.0'

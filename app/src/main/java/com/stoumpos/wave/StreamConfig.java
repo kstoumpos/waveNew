@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.stoumpos.wave;
 
 import android.content.Context;
 import android.content.SharedPreferences;

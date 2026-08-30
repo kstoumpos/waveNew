@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0A2323"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:paddingTop="60dp"
+    android:paddingStart="30dp"
+    android:paddingEnd="30dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sleep_timer_title"
+        android:textColor="#C2D2B9"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="24dp"
+        android:text="@string/sleep_timer_description"
+        android:textColor="#C2D2B9"
+        android:textSize="14sp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/sleepTimer15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:background="@drawable/bg_button_circle"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:text="@string/sleep_timer_15"
+            android:textColor="#C2D2B9" />
+
+        <Button
+            android:id="@+id/sleepTimer30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:background="@drawable/bg_button_circle"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:text="@string/sleep_timer_30"
+            android:textColor="#C2D2B9" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/sleepTimer45"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:background="@drawable/bg_button_circle"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:text="@string/sleep_timer_45"
+            android:textColor="#C2D2B9" />
+
+        <Button
+            android:id="@+id/sleepTimer60"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:background="@drawable/bg_button_circle"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:text="@string/sleep_timer_60"
+            android:textColor="#C2D2B9" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/sleepTimerCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@android:color/transparent"
+        android:text="@string/sleep_timer_cancel"
+        android:textColor="#c4ff54" />
+
+    <TextView
+        android:id="@+id/sleepTimerCountdown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:textColor="#c4ff54"
+        android:textSize="16sp" />
+
+</LinearLayout>

@@ -5,6 +5,21 @@
     android:layout_height="match_parent"
     android:background="#0A2323">
 
+    <!-- Menu -->
+    <ImageButton
+        android:id="@+id/menuButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:background="@android:color/transparent"
+        android:padding="10dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_menu"
+        android:contentDescription="@string/menu_button" />
+
     <!-- Header / Logo -->
     <ImageView
         android:id="@+id/background_image"

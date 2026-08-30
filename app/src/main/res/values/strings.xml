@@ -10,4 +10,25 @@
     <string name="youtube">youtube</string>
     <string name="website">website</string>
     <string name="main_text">YOUR DEVOTIONAL ROCK</string>
+
+    <string name="menu_button">Menu</string>
+    <string name="sleep_timer">Sleep Timer</string>
+    <string name="radio_alarm">Radio Alarm</string>
+
+    <string name="sleep_timer_title">Sleep Timer</string>
+    <string name="sleep_timer_description">Stop the stream automatically after:</string>
+    <string name="sleep_timer_15">15 min</string>
+    <string name="sleep_timer_30">30 min</string>
+    <string name="sleep_timer_45">45 min</string>
+    <string name="sleep_timer_60">60 min</string>
+    <string name="sleep_timer_cancel">Cancel Timer</string>
+    <string name="sleep_timer_inactive">No timer set</string>
+    <string name="sleep_timer_remaining">Stopping in %1$s</string>
+
+    <string name="radio_alarm_title">Radio Alarm</string>
+    <string name="radio_alarm_description">Wake up to the stream at:</string>
+    <string name="radio_alarm_enabled">Alarm enabled</string>
+    <string name="radio_alarm_save">Save Alarm</string>
+    <string name="radio_alarm_status_on">Alarm set for %1$02d:%2$02d, repeats daily</string>
+    <string name="radio_alarm_status_off">No alarm set</string>
 </resources>
