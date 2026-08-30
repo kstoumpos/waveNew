@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "236096491878",
+    "project_id": "wave974-c21d2",
+    "storage_bucket": "wave974-c21d2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:236096491878:android:87ff962de0d399fc3a38a7",
+        "android_client_info": {
+          "package_name": "com.stoumpos.wave"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbftyTZVHrdrknoSRo6NEZlpErOrlDhwM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

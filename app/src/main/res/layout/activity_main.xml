@@ -5,6 +5,32 @@
     android:layout_height="match_parent"
     android:background="#0A2323">
 
+    <!-- Menu -->
+    <ImageButton
+        android:id="@+id/menuButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
+        android:background="@android:color/transparent"
+        android:padding="8dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_menu"
+        android:contentDescription="@string/menu_button" />
+
+    <!-- Cast -->
+    <androidx.mediarouter.app.MediaRouteButton
+        android:id="@+id/mediaRouteButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@id/menuButton"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="4dp"
+        android:mediaRouteTypes="user" />
+
     <!-- Header / Logo -->
     <ImageView
         android:id="@+id/background_image"
@@ -75,13 +101,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/loadingStatus"
-        android:fontFamily="@font/black_mango_regular"
         android:paddingStart="30dp"
         android:paddingEnd="30dp"
         android:text="@string/main_text"
         android:textAlignment="center"
         android:textColor="#C2D2B9"
         android:textSize="48sp"
+        android:fontFamily="@font/black_mango_regular"
         android:visibility="visible" />
 
     <!-- Social Media Buttons — κάτω δεξιά -->

@@ -10,6 +10,32 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <!-- Menu -->
+        <ImageButton
+            android:id="@+id/menuButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:background="@android:color/transparent"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_menu"
+            android:contentDescription="@string/menu_button" />
+
+        <!-- Cast -->
+        <androidx.mediarouter.app.MediaRouteButton
+            android:id="@+id/mediaRouteButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentTop="true"
+            android:layout_toStartOf="@id/menuButton"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
+            android:mediaRouteTypes="user" />
+
         <!-- Header / Logo -->
         <ImageView
             android:id="@+id/background_image"
@@ -84,10 +110,10 @@
             android:paddingStart="50dp"
             android:paddingEnd="50dp"
             android:text="@string/main_text"
-            android:fontFamily="@font/black_mango_regular"
             android:textAlignment="center"
             android:textColor="#C2D2B9"
             android:textSize="32sp"
+            android:fontFamily="@font/black_mango_regular"
             android:visibility="visible" />
 
         <!-- Social Media Buttons -->
