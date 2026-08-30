@@ -1,13 +1,13 @@
 package com.stoumpos.wave;
 
-import android.app.Activity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
-public class RadioAlarmActivity extends Activity {
+public class RadioAlarmActivity extends AppCompatActivity {
 
     private TimePicker timePicker;
     private Switch enabledSwitch;

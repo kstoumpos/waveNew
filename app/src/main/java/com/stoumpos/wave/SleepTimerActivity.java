@@ -1,6 +1,6 @@
 package com.stoumpos.wave;
 
-import android.app.Activity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -12,7 +12,7 @@ import android.os.Looper;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class SleepTimerActivity extends Activity {
+public class SleepTimerActivity extends AppCompatActivity {
 
     private static final long TICK_INTERVAL_MILLIS = 1000L;
 

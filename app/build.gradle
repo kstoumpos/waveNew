@@ -38,6 +38,9 @@ dependencies {
     implementation 'androidx.media3:media3-common:1.11.0'
     implementation 'androidx.media3:media3-datasource:1.11.0'
     implementation 'androidx.media3:media3-exoplayer:1.11.0'
+    implementation 'androidx.media3:media3-session:1.11.0'
+    implementation 'com.google.android.gms:play-services-cast-framework:22.3.1'
+    implementation 'androidx.mediarouter:mediarouter:1.8.1'
     implementation platform('com.google.firebase:firebase-bom:34.18.0')
     implementation 'com.google.firebase:firebase-messaging'
     testImplementation 'junit:junit:4.13.2'
